@@ -1,0 +1,16 @@
+{
+  "name": "number",
+  "version": "1.0.0",
+  "description": "Outputs the inputted number into characters",
+  "main": "formatNumber.js",
+  "scripts": {
+    "start": "node formatNumber.js",
+    "test": "mocha tests/unitTests.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^6.2.2"
+  }
+}

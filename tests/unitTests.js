@@ -34,6 +34,32 @@ describe('Test script', () => {
 
     done();
   });
+  it('should write the integer in hexa', done => {
+    let screenWidth = 50;
+    let arguments = ['0x1B'];
+    let expected = 
+    ' _   _ \n' +
+    ' _|   |\n' +
+    '|_    |';
+    let result = outputFormattedNumber(screenWidth, arguments);
+    result.result.should.be.equal(expected);
+    assert(typeof result.error, 'undefined');
+
+    done();
+  });
+  it('should write the integer in binary', done => {
+    let screenWidth = 50;
+    let arguments = ['0b11'];
+    let expected = 
+    ' _ \n' +
+    ' _|\n' +
+    ' _|';
+    let result = outputFormattedNumber(screenWidth, arguments);
+    result.result.should.be.equal(expected);
+    assert(typeof result.error, 'undefined');
+
+    done();
+  });
   it('should write the integer and remove the + at the beginning', done => {
     let screenWidth = 50;
     let arguments = ['+12'];
@@ -143,7 +169,7 @@ describe('Test script', () => {
     done();
   });
   it('should return error too many arguments', done => {
-    let arguments = [1,2];
+    let arguments = ['1','2'];
     let result = outputFormattedNumber(undefined, arguments);
 
     result.error.should.be.equal(ERRORS[1]);

@@ -71,14 +71,16 @@ const TRANSLATION = {
 
 const REGEXP = {
   FLOAT: /^\+?[0-9]*\.?[0-9]+$/,
-  EXPONENT: /^\+?[0-9]*\.?[0-9]+(E|e)\+|\-[1-9][0-9]*$/
+  EXPONENT: /^\+?[0-9]*\.?[0-9]+(E|e)\+|\-[1-9][0-9]*$/,
+  CUSTOM: /^0(x|X|b|B)[0-9A-F]*$/
 }
 
 const ERRORS = [
   'Too few arguments, launch `node formatNumber.js -h` to see the exact syntax',
   'Too many arguments, launch `node formatNumber.js -h` to see the exact syntax',
   'Problem parameter is not a number',
-  'Number is too big >= E+309'
+  'Number is too big >= E+309',
+  'Syntax not handled'
 ];
 
 module.exports = {

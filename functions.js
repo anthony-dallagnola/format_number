@@ -17,8 +17,13 @@ const { REGEXP } = require('./constants');
  * npm start 0.3E-31
  * @example 
  * npm start 1.9E+15
+ * @example 
+ * npm start +12
+ * @example 
+ * npm start 0x20
  */
 outputFormattedNumber = (screenWidth, arguments) => {
+  console.log(arguments);
   if (arguments.length < 1) {
     // less than 1 argument
     return { error: ERRORS[0] };
@@ -98,7 +103,13 @@ outputFormattedNumber = (screenWidth, arguments) => {
           }
         }
       }
+    } else if(REGEXP.CUSTOM.test(arguments[0])) {
+      // HEXA or binary
+      number = (+arguments[0]).toString();
+    } else {
+      return { error: ERRORS[4] }
     }
+    console.log(number)
     // we translate it
     let result = '';
     // the calcul includes + 1 to eliminate the space character, ' ', if there is not enough space at the end of the line 

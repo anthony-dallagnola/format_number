@@ -23,7 +23,6 @@ const { REGEXP } = require('./constants');
  * npm start 0x20
  */
 outputFormattedNumber = (screenWidth, arguments) => {
-  console.log(arguments);
   if (arguments.length < 1) {
     // less than 1 argument
     return { error: ERRORS[0] };
@@ -109,7 +108,6 @@ outputFormattedNumber = (screenWidth, arguments) => {
     } else {
       return { error: ERRORS[4] }
     }
-    console.log(number)
     // we translate it
     let result = '';
     // the calcul includes + 1 to eliminate the space character, ' ', if there is not enough space at the end of the line 

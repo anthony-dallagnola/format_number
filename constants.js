@@ -70,8 +70,8 @@ const TRANSLATION = {
 
 
 const REGEXP = {
-  FLOAT: /^[0-9]*\.?[0-9]+$/,
-  EXPONENT: /^[0-9]*\.?[0-9]+(E|e)\+|\-[1-9][0-9]*$/
+  FLOAT: /^\+?[0-9]*\.?[0-9]+$/,
+  EXPONENT: /^\+?[0-9]*\.?[0-9]+(E|e)\+|\-[1-9][0-9]*$/
 }
 
 const ERRORS = [

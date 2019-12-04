@@ -34,6 +34,19 @@ describe('Test script', () => {
 
     done();
   });
+  it('should write the integer and remove the + at the beginning', done => {
+    let screenWidth = 50;
+    let arguments = ['+12'];
+    let expected = 
+    '     _ \n' +
+    '  |  _|\n' +
+    '  | |_ ';
+    let result = outputFormattedNumber(screenWidth, arguments);
+    result.result.should.be.equal(expected);
+    assert(typeof result.error, 'undefined');
+
+    done();
+  });
   // not in the specs but I thought it would be a nice addition
   it('should write the float', done => {
     let screenWidth = 50;

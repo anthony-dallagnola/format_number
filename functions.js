@@ -39,6 +39,7 @@ outputFormattedNumber = (screenWidth, arguments) => {
   } else {
     let number;
     if(REGEXP.FLOAT.test(arguments[0])) {
+      arguments[0] = arguments[0].replace(/\+/,'');
       if(arguments[0].includes('.')) {
         number = arguments[0].replace(/^0*(.*)0*/, '$1');
         if(number[0] === '.') {
@@ -50,6 +51,9 @@ outputFormattedNumber = (screenWidth, arguments) => {
     } else if(REGEXP.EXPONENT.test(arguments[0])) {
       if(+arguments[0] === Infinity) {
         return { error: ERRORS[3] }
+      }
+      if (arguments[0] === '+') {
+        arguments[0] = arguments[0].substring(1);
       }
       number = (+arguments[0]).toString();
       if(!REGEXP.FLOAT.test(number)) {
@@ -94,8 +98,6 @@ outputFormattedNumber = (screenWidth, arguments) => {
           }
         }
       }
-    // } else {
-
     }
     // we translate it
     let result = '';

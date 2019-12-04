@@ -40,7 +40,10 @@ outputFormattedNumber = (screenWidth, arguments) => {
     let number;
     if(REGEXP.FLOAT.test(arguments[0])) {
       if(arguments[0].includes('.')) {
-        number = '0' + arguments[0].replace(/^0*(.*)0*/, '$1');
+        number = arguments[0].replace(/^0*(.*)0*/, '$1');
+        if(number[0] === '.') {
+          number = '0' + number;
+        }
       } else {
         number = arguments[0].replace(/^0*(.*)/, '$1');
       }

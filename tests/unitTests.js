@@ -1,10 +1,11 @@
-const { outputFormattedNumber } = require('../functions');
+const { formatNumber } = require('../formatter');
 const { ERRORS } = require('../constants');
 const chai = require('chai');
 const should = chai.should();
 const assert = chai.assert;
 
 describe('Test script', () => {
+  // it.only('should write the integer', done => {
   it('should write the integer', done => {
     let screenWidth = 50;
     let arguments = ['123456789'];
@@ -12,7 +13,7 @@ describe('Test script', () => {
     '     _   _       _   _   _   _   _ \n' +
     '  |  _|  _| |_| |_  |_    | |_| |_|\n' +
     '  | |_   _|   |  _| |_|   | |_|   |';
-    let result = outputFormattedNumber(screenWidth, arguments);
+    let result = formatNumber(screenWidth, arguments);
     result.result.should.be.equal(expected);
     assert(typeof result.error, 'undefined');
     
@@ -28,7 +29,7 @@ describe('Test script', () => {
     '     _ \n' +
     '|_| |_ \n' +
     '  |  _|';
-    let result = outputFormattedNumber(screenWidth, arguments);
+    let result = formatNumber(screenWidth, arguments);
     result.result.should.be.equal(expected);
     assert(typeof result.error, 'undefined');
 
@@ -41,7 +42,7 @@ describe('Test script', () => {
     ' _   _ \n' +
     ' _|   |\n' +
     '|_    |';
-    let result = outputFormattedNumber(screenWidth, arguments);
+    let result = formatNumber(screenWidth, arguments);
     result.result.should.be.equal(expected);
     assert(typeof result.error, 'undefined');
 
@@ -54,7 +55,7 @@ describe('Test script', () => {
     ' _ \n' +
     ' _|\n' +
     ' _|';
-    let result = outputFormattedNumber(screenWidth, arguments);
+    let result = formatNumber(screenWidth, arguments);
     result.result.should.be.equal(expected);
     assert(typeof result.error, 'undefined');
 
@@ -67,7 +68,7 @@ describe('Test script', () => {
     '     _ \n' +
     '  |  _|\n' +
     '  | |_ ';
-    let result = outputFormattedNumber(screenWidth, arguments);
+    let result = formatNumber(screenWidth, arguments);
     result.result.should.be.equal(expected);
     assert(typeof result.error, 'undefined');
 
@@ -82,7 +83,7 @@ describe('Test script', () => {
     '| |       |  _|  _|\n' +
     '|_|  .    | |_   _|';
 
-    let result = outputFormattedNumber(screenWidth, arguments);
+    let result = formatNumber(screenWidth, arguments);
     result.result.should.be.equal(expected);
     assert(typeof result.error, 'undefined');
 
@@ -97,7 +98,7 @@ describe('Test script', () => {
     '  |  _| | | | | | |\n' +
     '  | |_  |_| |_| |_|';
 
-    let result = outputFormattedNumber(screenWidth, arguments);
+    let result = formatNumber(screenWidth, arguments);
     result.result.should.be.equal(expected);
     assert(typeof result.error, 'undefined');
 
@@ -111,7 +112,7 @@ describe('Test script', () => {
     '  | |_| |_| |_    | |_    | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | |\n' +
     '  |   | |_| |_|   |  _|   | |_| |_| |_| |_| |_| |_| |_| |_| |_| |_| |_| |_| |_| |_| |_| |_| |_| |_| |_| |_| |_| |_| |_| |_|';
 
-    let result = outputFormattedNumber(screenWidth, arguments);
+    let result = formatNumber(screenWidth, arguments);
     result.result.should.be.equal(expected);
     assert(typeof result.error, 'undefined');
 
@@ -125,7 +126,7 @@ describe('Test script', () => {
       '  | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | |\n' +
       '  | |_| |_| |_| |_| |_| |_| |_| |_| |_| |_| |_| |_| |_| |_| |_| |_| |_| |_| |_| |_| |_| |_| |_| |_| |_| |_| |_| |_| |_| |_|';
 
-    let result = outputFormattedNumber(screenWidth, arguments);
+    let result = formatNumber(screenWidth, arguments);
     result.result.should.be.equal(expected);
     assert(typeof result.error, 'undefined');
 
@@ -139,7 +140,7 @@ describe('Test script', () => {
       '| |     | | | | | | | | | | | | | |   |\n' +
       '|_|  .  |_| |_| |_| |_| |_| |_| |_|   |';
 
-    let result = outputFormattedNumber(screenWidth, arguments);
+    let result = formatNumber(screenWidth, arguments);
     result.result.should.be.equal(expected);
     assert(typeof result.error, 'undefined');
 
@@ -153,7 +154,7 @@ describe('Test script', () => {
       '| |     | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | |   | |_   _|\n' +
       '|_|  .  |_| |_| |_| |_| |_| |_| |_| |_| |_| |_| |_| |_| |_| |_| |_| |_| |_| |_| |_| |_| |_| |_| |_| |_| |_|   |  _| |_ ';
 
-    let result = outputFormattedNumber(screenWidth, arguments);
+    let result = formatNumber(screenWidth, arguments);
     result.result.should.be.equal(expected);
     assert(typeof result.error, 'undefined');
 
@@ -161,38 +162,57 @@ describe('Test script', () => {
   });
   it('should return error too few arguments', done => {
     let arguments = [];
-    let result = outputFormattedNumber(undefined, arguments);
-
-    result.error.should.be.equal(ERRORS[0]);
-    assert(typeof result.result, 'undefined');
-
-    done();
+    try {
+      formatNumber(undefined, arguments);
+      done('test failed to throw exception');
+    }
+    catch (err) {
+      err.should.be.equal(ERRORS.TOO_FEW_ARGUMENTS);
+      done();
+    }
   });
   it('should return error too many arguments', done => {
     let arguments = ['1','2'];
-    let result = outputFormattedNumber(undefined, arguments);
-
-    result.error.should.be.equal(ERRORS[1]);
-    assert(typeof result.result, 'undefined');
-
-    done();
+    try {
+      formatNumber(undefined, arguments);
+      done('test failed to throw exception');
+    }
+    catch (err) {
+      err.should.be.equal(ERRORS.TOO_MANY_ARGUMENTS);
+      done();
+    }
   });
   it('should return error argument is not a number', done => {
     let arguments = ['abc123'];
-    let result = outputFormattedNumber(undefined, arguments);
-
-    result.error.should.be.equal(ERRORS[2]);
-    assert(typeof result.result, 'undefined');
-
-    done();
+    try {
+      formatNumber(undefined, arguments);
+      done('test failed to throw exception');
+    }
+    catch (err) {
+      err.should.be.equal(ERRORS.NOT_A_NUMBER);
+      done();
+    }
   });
   it('should return error number is too big', done => {
     let arguments = ['1E+500'];
-    let result = outputFormattedNumber(undefined, arguments);
-
-    result.error.should.be.equal(ERRORS[3]);
-    assert(typeof result.result, 'undefined');
-
-    done();
+    try {
+      formatNumber(undefined, arguments);
+      done('test failed to throw exception');
+    }
+    catch (err) {
+      err.should.be.equal(ERRORS.NUMBER_TOO_BIG);
+      done();
+    }
+  });
+  it('should return error incorrect syntax', done => {
+    let arguments = ['1E500'];
+    try {
+      formatNumber(undefined, arguments);
+      done('test failed to throw exception');
+    }
+    catch (err) {
+      err.should.be.equal(ERRORS.INCORRECT_SYNTAX);
+      done();
+    }
   });
 });

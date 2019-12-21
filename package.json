@@ -2,9 +2,9 @@
   "name": "number",
   "version": "1.0.0",
   "description": "Outputs the inputted number into characters",
-  "main": "formatNumber.js",
+  "main": "index.js",
   "scripts": {
-    "start": "node formatNumber.js",
+    "start": "node index.js",
     "test": "mocha tests/unitTests.js"
   },
   "author": "",

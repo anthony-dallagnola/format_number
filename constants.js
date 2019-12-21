@@ -70,18 +70,22 @@ const TRANSLATION = {
 
 
 const REGEXP = {
-  FLOAT: /^\+?[0-9]*\.?[0-9]+$/,
-  EXPONENT: /^\+?[0-9]*\.?[0-9]+(E|e)\+|\-[1-9][0-9]*$/,
-  CUSTOM: /^0(x|X|b|B)[0-9A-F]*$/
+  NUMBER: {
+    FLOAT: /^\+?[0-9]*\.?[0-9]+$/,
+    EXPONENT: /^\+?[0-9]*\.?[0-9]+(E|e)\+|\-[1-9][0-9]*$/,
+    CUSTOM: /^0(x|X|b|B)[0-9A-F]*$/
+  },
+  ZEROS_TRIM: /^0*(.*)0*/,
+  ZEROS_TRIM_LEADING: /^0*(.*)/
 }
 
-const ERRORS = [
-  'Too few arguments, launch `node formatNumber.js -h` to see the exact syntax',
-  'Too many arguments, launch `node formatNumber.js -h` to see the exact syntax',
-  'Problem parameter is not a number',
-  'Number is too big >= E+309',
-  'Syntax not handled'
-];
+const ERRORS = {
+  TOO_FEW_ARGUMENTS: 'Too few arguments, launch `node formatNumber.js -h` to see the exact syntax',
+  TOO_MANY_ARGUMENTS: 'Too many arguments, launch `node formatNumber.js -h` to see the exact syntax',
+  NOT_A_NUMBER: 'Problem parameter is not a number',
+  NUMBER_TOO_BIG: 'Number is too big >= E+309',
+  INCORRECT_SYNTAX: 'Syntax not handled'
+};
 
 module.exports = {
   TRANSLATION,

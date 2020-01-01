@@ -1,6 +1,6 @@
-const { REGEXP, ERRORS } = require('./constants');
-const { handleFloat, handleExponent } = require('./parsers');
-const { displayCharacters } = require('./display');
+import { REGEXP, ERRORS } from './constants.js';
+import { handleFloat, handleExponent } from './parsers.js';
+import { displayCharacters } from './display.js';
 
 /**
  * Formats a number and print it out
@@ -23,12 +23,12 @@ const { displayCharacters } = require('./display');
  * @example 
  * npm start 0x20
  */
-const formatNumber = (screenWidth, arguments) => {
-  if (arguments.length < 1) {
+const formatNumber = (screenWidth, input) => {
+  if (input.length < 1) {
     throw ERRORS.TOO_FEW_ARGUMENTS;
-  } else if (arguments.length > 1) {
+  } else if (input.length > 1) {
     throw ERRORS.TOO_MANY_ARGUMENTS;
-  } else if (arguments[0] === '-h') {
+  } else if (input[0] === '-h') {
     // help 
     return { result:
       'Formats a number into the corresponding characters, if the screen width is not enough the number will be outputted on multiples lines\n' +
@@ -36,17 +36,17 @@ const formatNumber = (screenWidth, arguments) => {
       '\tnode formatNumber.js numberToFormat\n' +
       'numberToFormat is the number that will be formatted on the output, can be integer or float\n'
     }
-  } else if (isNaN(arguments[0])) {
+  } else if (isNaN(input[0])) {
     throw ERRORS.NOT_A_NUMBER;
   } else {
     let number;
-    if(REGEXP.NUMBER.FLOAT.test(arguments[0])) {
-      number = handleFloat(arguments[0]);
-    } else if(REGEXP.NUMBER.EXPONENT.test(arguments[0])) {
-      number = handleExponent(arguments[0]);
-    } else if(REGEXP.NUMBER.CUSTOM.test(arguments[0])) {
+    if(REGEXP.NUMBER.FLOAT.test(input[0])) {
+      number = handleFloat(input[0]);
+    } else if(REGEXP.NUMBER.EXPONENT.test(input[0])) {
+      number = handleExponent(input[0]);
+    } else if(REGEXP.NUMBER.CUSTOM.test(input[0])) {
       // HEXA or binary
-      number = (+arguments[0]).toString();
+      number = (+input[0]).toString();
     } else {
       throw ERRORS.INCORRECT_SYNTAX;
     }
@@ -56,6 +56,6 @@ const formatNumber = (screenWidth, arguments) => {
   }
 }
 
-module.exports = {
+export {
   formatNumber
 }

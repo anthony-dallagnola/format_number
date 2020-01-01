@@ -1,16 +1,23 @@
 {
+  "type": "module",
   "name": "number",
   "version": "1.0.0",
   "description": "Outputs the inputted number into characters",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "test": "mocha tests/unitTests.js"
+    "test": "mocha --require babel-register tests/unitTests.js",
+    "////": "mocha tests/unitTests.cjs",
+    "//": "mocha tests/unitTests.js"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "chai": "^4.2.0",
     "mocha": "^6.2.2"
+  },
+  "dependencies": {
+    "babel-preset-latest": "^6.24.1",
+    "babel-register": "^6.26.0"
   }
 }

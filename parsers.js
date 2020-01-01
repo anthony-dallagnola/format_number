@@ -1,4 +1,4 @@
-const { REGEXP, ERRORS } = require('./constants');
+import { REGEXP, ERRORS } from './constants.js';
 
 function handleFloat(inputNumber) {
   let number = inputNumber.replace(/\+/, '');
@@ -17,7 +17,7 @@ function handleExponent(inputNumber) {
   if (+inputNumber === Infinity) {
     throw ERRORS.NUMBER_TOO_BIG;
   }
-  number = (+inputNumber).toString();
+  let number = (+inputNumber).toString();
   if (!REGEXP.NUMBER.FLOAT.test(number)) {
     // Convertion into plain number didn't work because the number is too big, >= 1E+21 or <= 1E-7
     // the convertion changed the string into a number with at least a number before floating values
@@ -35,6 +35,7 @@ function handleExponent(inputNumber) {
 }
 
 function handleExponentInteger(value, exponent) {
+  let number;
   if (value.length <= exponent) {
     // >= 1
     number = value;
@@ -72,7 +73,7 @@ function handleExponentFloat(indexE, indexPoint, exponent, value) {
   return number;
 }
 
-module.exports = {
+export { 
   handleFloat,
   handleExponent
 }

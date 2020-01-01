@@ -1,4 +1,4 @@
-const { TRANSLATION } = require('./constants');
+import { TRANSLATION } from './constants.js';
 
 function displayCharacters(screenWidth, number) {
   let result = '';
@@ -20,6 +20,6 @@ function displayCharacters(screenWidth, number) {
   return result;
 }
 
-module.exports = {
+export {
   displayCharacters
 }

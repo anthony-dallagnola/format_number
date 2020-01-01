@@ -1,3 +1,9 @@
+// import {handleFloat} from './parsers';
+// import { handleFloat } from './parsers';
+// import { handleFloat } from './parsers';
+
+// handleFloat
+// handle
 const TRANSLATION = {
   // 0
   0: [
@@ -87,7 +93,7 @@ const ERRORS = {
   INCORRECT_SYNTAX: 'Syntax not handled'
 };
 
-module.exports = {
+export {
   TRANSLATION,
   REGEXP,
   ERRORS

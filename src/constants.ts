@@ -1,9 +1,3 @@
-// import {handleFloat} from './parsers';
-// import { handleFloat } from './parsers';
-// import { handleFloat } from './parsers';
-
-// handleFloat
-// handle
 const TRANSLATION = {
   // 0
   0: [

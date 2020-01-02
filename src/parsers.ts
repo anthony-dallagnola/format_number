@@ -1,4 +1,4 @@
-import { REGEXP, ERRORS } from './constants.js';
+import { REGEXP, ERRORS } from './constants';
 
 function handleFloat(inputNumber) {
   let number = inputNumber.replace(/\+/, '');

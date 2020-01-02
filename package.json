@@ -1,11 +1,14 @@
 {
-  "type": "module",
+  "type": "commonjs",
   "name": "number",
   "version": "1.0.0",
   "description": "Outputs the inputted number into characters",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
+    "prod": "node build/index.js",
+    "start": "ts-node src/index.ts",
+    "build": "tsc",
+    "///": "node index.js",
     "test": "mocha --require babel-register tests/unitTests.js",
     "////": "mocha tests/unitTests.cjs",
     "//": "mocha tests/unitTests.js"
@@ -17,7 +20,10 @@
     "mocha": "^6.2.2"
   },
   "dependencies": {
+    "@types/node": "^13.1.2",
     "babel-preset-latest": "^6.24.1",
-    "babel-register": "^6.26.0"
+    "babel-register": "^6.26.0",
+    "ts-node": "^8.5.4",
+    "typescript": "^3.7.4"
   }
 }

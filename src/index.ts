@@ -1,4 +1,4 @@
-import { formatNumber } from './formatter.js';
+import { formatNumber } from './formatter';
 
 try {
   let result = formatNumber(process.stdout.columns, process.argv.slice(2)).result;

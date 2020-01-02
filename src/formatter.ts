@@ -1,6 +1,6 @@
-import { REGEXP, ERRORS } from './constants.js';
-import { handleFloat, handleExponent } from './parsers.js';
-import { displayCharacters } from './display.js';
+import { REGEXP, ERRORS } from './constants';
+import { handleFloat, handleExponent } from './parsers';
+import { displayCharacters } from './display';
 
 /**
  * Formats a number and print it out

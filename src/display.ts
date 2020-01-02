@@ -1,4 +1,4 @@
-import { TRANSLATION } from './constants.js';
+import { TRANSLATION } from './constants';
 
 function displayCharacters(screenWidth, number) {
   let result = '';

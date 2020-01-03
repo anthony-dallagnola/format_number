@@ -1,0 +1,60 @@
+{
+  "env": {
+    "browser": true,
+    "es6": true
+  },
+  "extends": [
+    "google"
+  ],
+  "globals": {
+    "Atomics": "readonly",
+    "SharedArrayBuffer": "readonly"
+  },
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": 2018,
+    "sourceType": "module"
+  },
+  "plugins": [
+    "@typescript-eslint"
+  ],
+  "rules": {
+    "max-len": [
+      "error",
+      {
+        "code": 160
+      }
+    ],
+    "valid-jsdoc": [
+      "error",
+      {
+        "prefer": {
+          "return": "returns"
+          // "requireReturn": true,
+          // "requireParamDescription": true,
+          // "requireReturnDescription": true,
+          // "requireReturnType": true,
+          // "requireParamType": true
+        }
+      }
+    ],
+    // "require-jsdoc": [
+    //   "error",
+    //   {
+    //     "MethodDefinition": true
+    //   }
+    // ],
+    "object-curly-spacing": "off", 
+    // Indent JS at 2
+    "indent": [
+      "error",
+      2
+    ],
+    // Indent TS at 2
+    "@typescript-eslint/indent": [
+      "error",
+      2
+    ],
+    "@typescript-eslint/no-inferrable-types": ["error"]
+  }
+}

@@ -8,15 +8,22 @@
     "prod": "node build/index.js",
     "start": "ts-node src/index.ts",
     "build": "tsc",
-    "///": "node index.js",
+    "lint": "eslint src/*",
+    "lint-fix": "eslint --fix src/*",
+    "lint-debug": "eslint --debug src/*",
     "test": "mocha --require babel-register tests/unitTests.js",
+    "///": "node index.js",
     "////": "mocha tests/unitTests.cjs",
     "//": "mocha tests/unitTests.js"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^2.14.0",
+    "@typescript-eslint/parser": "^2.14.0",
     "chai": "^4.2.0",
+    "eslint": "^6.8.0",
+    "eslint-config-google": "^0.14.0",
     "mocha": "^6.2.2"
   },
   "dependencies": {

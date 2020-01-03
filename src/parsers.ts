@@ -1,6 +1,13 @@
 import { REGEXP, ERRORS } from './constants';
 
-function handleFloat(inputNumber) {
+/**
+ * Parse float string into valid float written as string
+ * Removes leading 0, trailing 0
+ *
+ * @param {string} inputNumber float number entered
+ * @returns {string} number formatted in string
+ */
+function handleFloat(inputNumber: string): string {
   let number = inputNumber.replace(/\+/, '');
   if (number.includes('.')) {
     number = number.replace(REGEXP.ZEROS_TRIM, '$1');
@@ -13,7 +20,14 @@ function handleFloat(inputNumber) {
   return number;
 }
 
-function handleExponent(inputNumber) {
+
+/**
+ * Parse exponent number string into plain number written as string
+ *
+ * @param {string} inputNumber exponent number entered
+ * @returns {string} number formatted to string
+ */
+function handleExponent(inputNumber: string): string {
   if (+inputNumber === Infinity) {
     throw ERRORS.NUMBER_TOO_BIG;
   }
@@ -21,10 +35,10 @@ function handleExponent(inputNumber) {
   if (!REGEXP.NUMBER.FLOAT.test(number)) {
     // Convertion into plain number didn't work because the number is too big, >= 1E+21 or <= 1E-7
     // the convertion changed the string into a number with at least a number before floating values
-    let indexE = number.indexOf('e');
-    let indexPoint = number.indexOf('.');
-    let value = number.substring(0, indexE);
-    let exponent = +number.substring(indexE + 1);
+    const indexE: number = number.indexOf('e');
+    const indexPoint: number = number.indexOf('.');
+    const value: string = number.substring(0, indexE);
+    const exponent: number = +number.substring(indexE + 1);
     if (indexPoint !== -1) {
       number = handleExponentFloat(indexE, indexPoint, exponent, value);
     } else {
@@ -34,7 +48,14 @@ function handleExponent(inputNumber) {
   return number;
 }
 
-function handleExponentInteger(value, exponent) {
+/**
+ * Extracts a plain number from value and exponent
+ *
+ * @param {string} value    value without exponent
+ * @param {number} exponent exponent as number
+ * @returns {string} plain number, without exponents, as string
+ */
+function handleExponentInteger(value: string, exponent: number): string {
   let number;
   if (value.length <= exponent) {
     // >= 1
@@ -53,9 +74,19 @@ function handleExponentInteger(value, exponent) {
   return number;
 }
 
-function handleExponentFloat(indexE, indexPoint, exponent, value) {
-  let number;
-  let diff = indexE - indexPoint - 1;
+
+/**
+ * Extracts a floating number from value and exponent
+ *
+ * @param {number} indexE position of exponent
+ * @param {number} indexPoint position of floating value
+ * @param {number} exponent value of exponent
+ * @param {string} value value of the mantice
+ * @returns {string} plain number, without exponents, as string
+ */
+function handleExponentFloat(indexE: number, indexPoint: number, exponent: number, value: string): string {
+  let number: string;
+  const diff = indexE - indexPoint - 1;
   value = value.replace(/\./, '');
   if (diff <= exponent) {
     number = value;
@@ -73,7 +104,7 @@ function handleExponentFloat(indexE, indexPoint, exponent, value) {
   return number;
 }
 
-export { 
+export {
   handleFloat,
-  handleExponent
-}
+  handleExponent,
+};

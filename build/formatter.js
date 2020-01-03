@@ -14,10 +14,10 @@ var formatNumber = function (screenWidth, input) {
         return { result: 'Formats a number into the corresponding characters, if the screen width is not enough the number will be outputted on multiples lines\n' +
                 'Usage: \n' +
                 '\tnode formatNumber.js numberToFormat\n' +
-                'numberToFormat is the number that will be formatted on the output, can be integer or float\n'
+                'numberToFormat is the number that will be formatted on the output, can be integer or float\n',
         };
     }
-    else if (isNaN(input[0])) {
+    else if (isNaN(+input[0])) {
         throw constants_1.ERRORS.NOT_A_NUMBER;
     }
     else {

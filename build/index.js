@@ -8,4 +8,5 @@ try {
 catch (err) {
     console.error('format number failed: ', err);
 }
+;
 //# sourceMappingURL=index.js.map

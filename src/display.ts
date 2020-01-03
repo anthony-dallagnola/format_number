@@ -1,10 +1,18 @@
 import { TRANSLATION } from './constants';
 
-function displayCharacters(screenWidth, number) {
+
+/**
+ *
+ *
+ * @param {number} screenWidth number of characters the screen has
+ * @param {string} number string to write
+ * @returns {string} string to display
+ */
+function displayCharacters(screenWidth: number, number: string): string {
   let result = '';
-  // the calcul includes + 1 to eliminate the space character, ' ', if there is not enough space at the end of the line 
-  let charsPerLine = Math.floor(((screenWidth ? screenWidth : Infinity) + 1) / 4);
-  let numberLines = Math.floor(number.length / charsPerLine) + 1;
+  // the calcul includes + 1 to eliminate the space character, ' ', if there is not enough space at the end of the line
+  const charsPerLine: number = Math.floor(((screenWidth ? screenWidth : Infinity) + 1) / 4);
+  const numberLines: number = Math.floor(number.length / charsPerLine) + 1;
   // browsing lines
   for (let i = 0; i < numberLines; i++) {
     // browsing the 3 lines of a character
@@ -21,5 +29,5 @@ function displayCharacters(screenWidth, number) {
 }
 
 export {
-  displayCharacters
-}
+  displayCharacters,
+};

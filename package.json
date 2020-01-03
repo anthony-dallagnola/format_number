@@ -8,29 +8,30 @@
     "prod": "node build/index.js",
     "start": "ts-node src/index.ts",
     "build": "tsc",
-    "lint": "eslint src/*",
+    "lint": "eslint src/*.ts tests/*.ts",
+    "//": "eslint src/*",
     "lint-fix": "eslint --fix src/*",
     "lint-debug": "eslint --debug src/*",
-    "test": "mocha --require babel-register tests/unitTests.js",
-    "///": "node index.js",
-    "////": "mocha tests/unitTests.cjs",
-    "//": "mocha tests/unitTests.js"
+    "test": "mocha -r ts-node/register tests/*.ts",
+    "//test": "mocha --require babel-register tests/unitTests.js"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/chai": "^4.2.7",
+    "@types/mocha": "^5.2.7",
     "@typescript-eslint/eslint-plugin": "^2.14.0",
     "@typescript-eslint/parser": "^2.14.0",
     "chai": "^4.2.0",
     "eslint": "^6.8.0",
     "eslint-config-google": "^0.14.0",
-    "mocha": "^6.2.2"
+    "mocha": "^6.2.2",
+    "ts-node": "^8.5.4"
   },
   "dependencies": {
     "@types/node": "^13.1.2",
     "babel-preset-latest": "^6.24.1",
     "babel-register": "^6.26.0",
-    "ts-node": "^8.5.4",
     "typescript": "^3.7.4"
   }
 }

@@ -1,8 +1,8 @@
 import { formatNumber } from '../build/formatter.js';
 import { ERRORS } from '../build/constants.js';
-import chai from 'chai';
-const should = chai.should();
-const assert = chai.assert;
+import { assert } from 'chai';
+// imports should
+import 'chai/register-should';
 
 describe('Test script', () => {
   // it.only('should write the integer', done => {
@@ -10,9 +10,9 @@ describe('Test script', () => {
     const screenWidth = 50;
     const input = ['123456789'];
     const expected =
-    '     _   _       _   _   _   _   _ \n' +
-    '  |  _|  _| |_| |_  |_    | |_| |_|\n' +
-    '  | |_   _|   |  _| |_|   | |_|   |';
+      '     _   _       _   _   _   _   _ \n' +
+      '  |  _|  _| |_| |_  |_    | |_| |_|\n' +
+      '  | |_   _|   |  _| |_|   | |_|   |';
     const result = formatNumber(screenWidth, input);
     result.result.should.be.equal(expected);
     assert(typeof result.error, 'undefined');
@@ -23,12 +23,12 @@ describe('Test script', () => {
     const screenWidth = 11;
     const input = ['012345'];
     const expected =
-    '     _   _ \n' +
-    '  |  _|  _|\n' +
-    '  | |_   _|\n' +
-    '     _ \n' +
-    '|_| |_ \n' +
-    '  |  _|';
+      '     _   _ \n' +
+      '  |  _|  _|\n' +
+      '  | |_   _|\n' +
+      '     _ \n' +
+      '|_| |_ \n' +
+      '  |  _|';
     const result = formatNumber(screenWidth, input);
     result.result.should.be.equal(expected);
     assert(typeof result.error, 'undefined');
@@ -39,9 +39,9 @@ describe('Test script', () => {
     const screenWidth = 50;
     const input = ['0x1B'];
     const expected =
-    ' _   _ \n' +
-    ' _|   |\n' +
-    '|_    |';
+      ' _   _ \n' +
+      ' _|   |\n' +
+      '|_    |';
     const result = formatNumber(screenWidth, input);
     result.result.should.be.equal(expected);
     assert(typeof result.error, 'undefined');
@@ -52,9 +52,9 @@ describe('Test script', () => {
     const screenWidth = 50;
     const input = ['0b11'];
     const expected =
-    ' _ \n' +
-    ' _|\n' +
-    ' _|';
+      ' _ \n' +
+      ' _|\n' +
+      ' _|';
     const result = formatNumber(screenWidth, input);
     result.result.should.be.equal(expected);
     assert(typeof result.error, 'undefined');
@@ -65,9 +65,9 @@ describe('Test script', () => {
     const screenWidth = 50;
     const input = ['+12'];
     const expected =
-    '     _ \n' +
-    '  |  _|\n' +
-    '  | |_ ';
+      '     _ \n' +
+      '  |  _|\n' +
+      '  | |_ ';
     const result = formatNumber(screenWidth, input);
     result.result.should.be.equal(expected);
     assert(typeof result.error, 'undefined');
@@ -79,9 +79,9 @@ describe('Test script', () => {
     const screenWidth = 50;
     const input = ['0.123'];
     const expected =
-    ' _           _   _ \n' +
-    '| |       |  _|  _|\n' +
-    '|_|  .    | |_   _|';
+      ' _           _   _ \n' +
+      '| |       |  _|  _|\n' +
+      '|_|  .    | |_   _|';
 
     const result = formatNumber(screenWidth, input);
     result.result.should.be.equal(expected);
@@ -94,9 +94,9 @@ describe('Test script', () => {
     const screenWidth = 50;
     const input = ['12E+3'];
     const expected =
-    '     _   _   _   _ \n' +
-    '  |  _| | | | | | |\n' +
-    '  | |_  |_| |_| |_|';
+      '     _   _   _   _ \n' +
+      '  |  _| | | | | | |\n' +
+      '  | |_  |_| |_| |_|';
 
     const result = formatNumber(screenWidth, input);
     result.result.should.be.equal(expected);
@@ -108,9 +108,9 @@ describe('Test script', () => {
     const screenWidth = 500;
     const input = ['1.486151E+30'];
     const expected =
-    '         _   _       _       _   _   _   _   _   _   _   _   _   _   _   _   _   _   _   _   _   _   _   _   _   _   _   _ \n' +
-    '  | |_| |_| |_    | |_    | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | |\n' +
-    '  |   | |_| |_|   |  _|   | |_| |_| |_| |_| |_| |_| |_| |_| |_| |_| |_| |_| |_| |_| |_| |_| |_| |_| |_| |_| |_| |_| |_| |_|';
+      '         _   _       _       _   _   _   _   _   _   _   _   _   _   _   _   _   _   _   _   _   _   _   _   _   _   _   _ \n' +
+      '  | |_| |_| |_    | |_    | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | |\n' +
+      '  |   | |_| |_|   |  _|   | |_| |_| |_| |_| |_| |_| |_| |_| |_| |_| |_| |_| |_| |_| |_| |_| |_| |_| |_| |_| |_| |_| |_| |_|';
 
     const result = formatNumber(screenWidth, input);
     result.result.should.be.equal(expected);
